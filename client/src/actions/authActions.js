@@ -8,6 +8,7 @@ export const SignUserUp = ({ email, password }) => async dispatch => {
 
   localStorage.setItem("token", res.data.token);
 
+  history.push("/");
 };
 
 export const SignUserIn = ({ email, password }) => async dispatch => {
@@ -15,11 +16,13 @@ export const SignUserIn = ({ email, password }) => async dispatch => {
   dispatch({ type: AUTH_USER });
   localStorage.setItem("token", res.data.token);
 
-  
+  history.push("/");
 };
 
 export const Logout = () => {
   localStorage.removeItem("token");
+
+  history.push("/signin");
 
   return { type: LOG_OUT };
 };
