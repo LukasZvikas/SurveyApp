@@ -36,6 +36,15 @@ passport.use(
       if (!user) {
         return done(null, false);
       }
+      user.verifyPassword(password, (err, isMatch) => {
+        if (err) {
+          return done(err);
+        }
+        if (!isMatch) {
+          return done(null, false);
+        }
+        return done(null, user);
+      });
     });
   })
 );
