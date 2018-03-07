@@ -1,5 +1,13 @@
 import axios from "axios";
 import { FETCH_USER, AUTH_USER, LOG_OUT } from "./types";
+import history from "../utilities/history";
+
+export const fetchUser = () => async dispatch => {
+  const res = await axios.get("/", {
+    headers: { authorization: localStorage.getItem("token") }
+  });
+  dispatch({ type: FETCH_USER, payload: res.data });
+};
 
 export const SignUserUp = ({ email, password }) => async dispatch => {
   const res = await axios.post("/user/signup", { email, password });
