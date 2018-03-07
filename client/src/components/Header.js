@@ -9,10 +9,8 @@ class Header extends Component {
     console.log(this.props.auth)
     switch (this.props.auth.authenticated) {
       case true:
-        return [
+        return ;
          
-        ];
-
       default:
         return [
           <li key={1} className="nav-item">

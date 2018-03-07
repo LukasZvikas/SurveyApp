@@ -1,0 +1,26 @@
+.navbar-nav-custom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.navbar-item {
+    margin-right: 12px;
+
+}
+.navbar-brand {  
+    margin-left: 12px;
+}
+.nav-link{
+    color: #DCDCDC
+}
+.credits{
+   display: block;
+   padding: .5rem 1rem;
+   color: #DCDCDC;
+   text-transform: uppercase;
+}
