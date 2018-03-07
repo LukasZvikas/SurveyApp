@@ -42,7 +42,20 @@ class SignIn extends Component {
   }
 }
 
+function validate(values) {
+  const errors = {};
+
+  _.each(authTypes, ({ name }) => {
+    if (!values[name]) {
+      errors[name] = "Please complete this field";
+    }
+  });
+
+  return errors;
+}
+
 export default reduxForm({
+  validate,
   form: "signInForm",
   fields: ["email", "password"]
 })(connect(null, authActions)(SignIn));
