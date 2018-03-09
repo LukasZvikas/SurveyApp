@@ -2,7 +2,7 @@ const passport = require("passport");
 const jwtPassport = require("passport-jwt").Strategy;
 const jwtExtract = require("passport-jwt").ExtractJwt;
 const localPassport = require("passport-local");
-const User = require("../Model/user");
+const User = require("../model/User");
 const keys = require("../config/keys");
 
 const jwtOptions = {

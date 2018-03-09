@@ -3,7 +3,7 @@ import { FETCH_USER, AUTH_USER, LOG_OUT } from "./types";
 import history from "../utilities/history";
 
 export const fetchUser = () => async dispatch => {
-  const res = await axios.get("/", {
+  const res = await axios.get("/user", {
     headers: { authorization: localStorage.getItem("token") }
   });
   dispatch({ type: FETCH_USER, payload: res.data });
