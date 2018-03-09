@@ -12,7 +12,7 @@ const app = express();
 
 app.use(bodyParser.json());
 require("./routes/authRoutes")(app);
-require('./Routes/paymentRoutes')(app);
+require('./routes/paymentRoutes')(app);
 
 const PORT = process.env.PORT || 5000;
 
