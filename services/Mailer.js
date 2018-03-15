@@ -1,36 +1,38 @@
 const sendgrid = require("sendgrid");
-const { mail } = sendgrid;
+const mailerHelper = sendgrid.mail;
 const keys = require("../config/keys");
 
-class Mailer extends mail.Mail {
+class Mailer extends mailerHelper.Mail {
   constructor({ recipients, subject }, content) {
     super();
+
     this.sendgridApi = sendgrid(keys.sendgridKey);
-    this.fromEmail = new mail.Mail("lzvikas1@gmail.com");
+    this.fromEmail = new mailerHelper.Email("lzvikas1@gmail.com");
     this.subject = subject;
     this.recipients = this.formatAddresses(recipients);
-    this.body = new mail.Content("text/html", content);
+    this.body = new mailerHelper.Content("text/html", content);
 
-    this.addContent(content);
+    this.addContent(this.body);
     this.addClickTracking();
+    this.addEmails();
   }
 
   formatAddresses(emails) {
     return emails.map(({ email }) => {
-      return new mail.Email(email);
+      return new mailerHelper.Email(email);
     });
   }
 
   addClickTracking() {
-    const trackingSettings = new helper.TrackingSettings();
-    const clickTracking = new helper.ClickTracking(true, true);
+    const trackingSettings = new mailerHelper.TrackingSettings();
+    const clickTracking = new mailerHelper.ClickTracking(true, true);
 
     trackingSettings.setClickTracking(clickTracking);
     this.addTrackingSettings(trackingSettings);
   }
 
   addEmails() {
-    const personalization = new helper.Personalization();
+    const personalization = new mailerHelper.Personalization();
 
     this.recipients.forEach(recipient => {
       personalization.addTo(recipient);
@@ -42,7 +44,7 @@ class Mailer extends mail.Mail {
   	const req = this.sendgridApi.emptyRequest({
   		method: 'POST',
   		path: '/v3/mail/send',
-  		body: this.toJSON();
+  		body: this.toJSON()
   	})
 
   	const res = await this.sendgridApi.API(req);

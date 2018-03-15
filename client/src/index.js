@@ -7,9 +7,15 @@ import App from "./components/App";
 import reducers from "./reducers";
 import { AUTH_USER } from "./actions/types";
 
+import axios from 'axios';
+
+window.axios = axios;
+
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 const token = localStorage.getItem("token");
+
+
 
 if (token) {
   store.dispatch({ type: AUTH_USER });
