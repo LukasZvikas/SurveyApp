@@ -19,7 +19,20 @@ module.exports = (app) => {
 		})
 
 		const mailer = new Mailer(newSurvey, surveyTemplate(newSurvey));
+		try{
+
 		await mailer.send();
+		await newSurvey.save();
+		req.user.credits -= 1;
+		const updatedUser = await req.user.save();
+		res.send(updatedUser);
+		
+		}
+		catch(err){
+
+			res.status(422).send(err);
+
+		}
 	})
 }
 
