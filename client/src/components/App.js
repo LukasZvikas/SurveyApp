@@ -4,6 +4,7 @@ import SignIn from "./authentication/SignIn";
 import Header from "./Header";
 import Dashboard from "./Dashboard";
 import Logout from "./authentication/Logout";
+import SurveyForm from "./surveys/SurveyForm";
 import history from "../utilities/history";
 import { Router, Switch, Route } from "react-router-dom";
 
@@ -19,6 +20,7 @@ class App extends Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
               <Route path="/logout" component={Logout} />
+              <Route path="/newSurvey" component={SurveyForm} />            
             </Switch>
           </div>
         </Router>
