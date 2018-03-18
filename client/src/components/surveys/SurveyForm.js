@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import surveyTypes from "./surveyTypes";
 import SurveyFields from "./SurveyFields";
+import emailValidation from "../../utilities/emailValidation";
 
 class SurveyForm extends Component {
   renderFields() {
@@ -21,17 +22,13 @@ class SurveyForm extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.form);
     return (
       <div className="container">
-        <form
-          onSubmit={values => {
-            console.log(values);
-          }}
-        >
+        <form onSubmit={this.props.handleSubmit(this.props.onNext)}>
           {this.renderFields()}
-          <button className="btn btn-primary" type="submit">
-            Submit
+          <button type="submit" className="btn btn-primary">
+            Next
           </button>
         </form>
       </div>
@@ -41,10 +38,12 @@ class SurveyForm extends Component {
 
 function validate(values) {
   const errors = {};
+ 
+  	errors.recipients = emailValidation(values.recipients || '')
 
-  _.each(surveyTypes, field => {
-    if (!values[field.name]) {
-      errors[field.name] = "Please complete this field";
+    _.each(surveyTypes, ({name}) => {
+    if (!values[name]) {
+      errors[name] = "Please complete this field";
     }
   });
 
@@ -53,5 +52,9 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: "SurveyForm",
-  fields: ["title", "subject", "body", "recipients"]
+  destroyOnUnmount: false
 })(SurveyForm);
+
+
+
+
