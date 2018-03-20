@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import * as authActions from "../actions/authActions";
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
-  // componentDidMount() {
-  //   this.props.fetchUser();
-  // }
   render() {
-    return <h2>Dashboard</h2>;
+    return (
+      <div>
+        <h2>Dashboard</h2>
+        <Link to="/surveys/new" className="btn btn-primary" >Add Survey</Link>
+      </div>
+    );
   }
 }
 

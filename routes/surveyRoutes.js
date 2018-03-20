@@ -7,6 +7,12 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = require("../model/Surveys");
 
 module.exports = app => {
+
+  app.post("/api/surveys/localtunnel", (req,res) => {
+    console.log(req.body);
+    res.send({});
+
+  })
   app.post("/api/surveys/send",requireAuth,requireCredits, async (req, res) => {
       const { title, subject, body, recipients } = req.body;
       const newSurvey = new Survey({
@@ -24,8 +30,7 @@ module.exports = app => {
 
         req.user.credits -= 1;
         const updatedUser = await req.user.save();
-        console.log("this is UPDATED USER", updatedUser);
-        res.send(updatedUser);
+        res.send(JSON.stringify(updatedUser.credits));
       } catch (err) {
         res.status(422).send(err);
       }

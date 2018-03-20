@@ -10,7 +10,6 @@ class Mailer extends mailerHelper.Mail {
     this.from_email = new mailerHelper.Email("lzvikas1@gmail.com");
     this.subject = subject;
     this.recipients = this.formatAddresses(recipients);
-    console.log("hey",this.recipients);
     this.body = new mailerHelper.Content("text/html", content);
 
     this.addContent(this.body);
@@ -36,14 +35,12 @@ class Mailer extends mailerHelper.Mail {
     const personalization = new mailerHelper.Personalization();
 
     this.recipients.forEach(recipient => {
-      console.log("THIS is", recipient)
       personalization.addTo(recipient);
     });
     this.addPersonalization(personalization);
   }
 
   async send() {
-    console.log("ai")
   	const req = this.sendgridApi.emptyRequest({
   		method: 'POST',
   		path: '/v3/mail/send',
@@ -53,7 +50,7 @@ class Mailer extends mailerHelper.Mail {
     console.log(req.body.personalizations)
 
   	const res = await this.sendgridApi.API(req);
-    console.log("ai3")
+    
   	return res;
 
   }

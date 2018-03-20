@@ -10,7 +10,8 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "dev": "concurrently \"npm run server \" \"npm run client\" \"npm run localtunnel\"",
+    "localtunnel":"lt --port 5000 -s qwertsgfcvvcvxcvxcvx",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
@@ -25,6 +26,7 @@
     "express": "^4.16.2",
     "history": "^4.7.2",
     "jwt-simple": "^0.5.1",
+    "localtunnel": "^1.8.3",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.9",
     "nodemon": "^1.17.1",
