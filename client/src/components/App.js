@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import SignUp from "./authentication/SignUp";
 import SignIn from "./authentication/SignIn";
 import Header from "./Header";
@@ -7,8 +8,13 @@ import Logout from "./authentication/Logout";
 import SurveyNew from "./surveys/SurveyNew";
 import history from "../utilities/history";
 import { Router, Switch, Route } from "react-router-dom";
+import * as authActions from "../actions/authActions";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+
   render() {
     return (
       <div>
@@ -29,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect(null, authActions)(App);
