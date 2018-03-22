@@ -11,4 +11,4 @@ const recipientSchema = new Schema({
 })
 
 
-const Recipients = recipientSchema;
+module.exports = recipientSchema;
