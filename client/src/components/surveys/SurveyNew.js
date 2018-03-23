@@ -11,7 +11,6 @@ class SurveyNew extends Component {
   }
 
   renderContent() {
-    console.log(this.state);
     if (this.state.surveyState) {
       return (
         <SurveyFormReview

@@ -13,26 +13,54 @@ import * as authActions from "../actions/authActions";
 class App extends Component {
   componentDidMount() {
     this.props.fetchUser();
+    console.log(this.props);
+  }
+
+  renderContent() {
+    switch (this.props.auth.authenticated) {
+      case true:
+        return (
+          <div>
+            <Router history={history}>
+              <div>
+                <Header />
+                <Switch>
+                  <Route exact path="/" component={Dashboard} />
+                  <Route path="/signup" component={SignUp} />
+                  <Route path="/signin" component={SignIn} />
+                  <Route path="/logout" component={Logout} />
+                  <Route path="/surveys/new" component={SurveyNew} />
+                </Switch>
+              </div>
+            </Router>
+          </div>
+        );
+      default:
+        return (
+          <div>
+            <Router history={history}>
+              <div>
+                <Header />
+                <Switch>
+                  <Route exact path="/" component={Dashboard} />
+                  <Route path="/signup" component={SignUp} />
+                  <Route path="/signin" component={SignIn} />
+                  <Route path="/surveys/new" component={SignIn} />
+                </Switch>
+              </div>
+            </Router>
+          </div>
+        );
+    }
   }
 
   render() {
-    return (
-      <div>
-        <Router history={history}>
-          <div>
-            <Header />
-            <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route path="/signup" component={SignUp} />
-              <Route path="/signin" component={SignIn} />
-              <Route path="/logout" component={Logout} />
-              <Route path="/surveys/new" component={SurveyNew} />            
-            </Switch>
-          </div>
-        </Router>
-      </div>
-    );
+    return <div>{this.renderContent()}</div>;
   }
 }
 
-export default connect(null, authActions)(App);
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps, authActions)(App);

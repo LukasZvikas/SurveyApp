@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchSurveys } from "../../actions/surveyActions";
 
 class FetchSurveys extends Component {
-  
-
   renderSurveys() {
     return this.props.surveys.map(survey => {
       return (
@@ -24,13 +23,20 @@ class FetchSurveys extends Component {
   }
 
   render() {
-  	console.log(this.props.surveys)
-    return <div>{this.renderSurveys()}</div>;
+    return (
+      <div>
+        {this.renderSurveys()}
+        
+        <Link to="/surveys/new" className="btn btn-primary">
+          Add Survey
+        </Link>
+      </div>
+    );
   }
 }
 
 function mapStateToProps(state) {
-  return { surveys: state.surveys};
+  return { surveys: state.surveys };
 }
 
 export default connect(mapStateToProps, { fetchSurveys })(FetchSurveys);

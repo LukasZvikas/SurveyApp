@@ -1,16 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import FetchSurveys from "./surveys/FetchSurveys";
+import { connect } from "react-redux";
 
 class Dashboard extends Component {
   render() {
-    return (
-      <div>
-        <FetchSurveys /> 
-        <Link to="/surveys/new" className="btn btn-primary" >Add Survey</Link>
-      </div>
-    );
+    return <div>{this.props.auth.authenticated ? <FetchSurveys /> : <div>Please Sign Up or Log In</div>}</div>;
   }
 }
 
-export default Dashboard;
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Dashboard);
