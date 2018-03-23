@@ -1,9 +1,11 @@
 import { FETCH_SURVEYS } from "../actions/types";
 
-export default function(state = {}, action) {
+export default function(state = [], action) {
   switch (action.type) {
     case FETCH_SURVEYS:
-      return { ...state, surveys: action.payload };
+    	const list = action.payload;
+    	console.log(list);
+      return  action.payload;
     default:
       return state;
   }

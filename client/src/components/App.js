@@ -22,7 +22,7 @@ class App extends Component {
           <div>
             <Header />
             <Switch>
-              <Route path="/surveys" component={Dashboard} />
+              <Route exact path="/" component={Dashboard} />
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
               <Route path="/logout" component={Logout} />

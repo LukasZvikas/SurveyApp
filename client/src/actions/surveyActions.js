@@ -17,5 +17,5 @@ export const fetchSurveys = () => async dispatch => {
     headers: { authorization: localStorage.getItem("token") }
   });
 
-  dispatch({ type: FETCH_SURVEYS, payload: res});
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };

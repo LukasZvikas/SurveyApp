@@ -6,7 +6,7 @@ import surveyReducer from './surveyReducer';
 export default combineReducers({
 	auth: authReducer,
 	form: formReducer,
-	survey: surveyReducer
+	surveys: surveyReducer
 	
 	
 });
