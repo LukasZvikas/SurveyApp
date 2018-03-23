@@ -9,6 +9,15 @@ const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 const Survey = require('../model/Surveys');
 
 module.exports = app => {
+
+  app.get('/api/surveys', requireAuth, async (req, res) => {
+
+    const Surveys = await Survey.find({_createdBy: req.user.id}).select({recipients: false});
+
+    res.send(Surveys);
+
+  })
+
   app.post("/api/surveys/localtunnel", (req, res) => {
     const p = new pathParser("/api/surveys/:surveyId/:choice");
 
@@ -16,7 +25,6 @@ module.exports = app => {
       .map(event => {
         //takes only the pathname of the url, does not include the domain
         const pathname = new URL(event.url).pathname;
-        const pathname2 = new URL(event.url);
         const match = p.test(pathname);
 
         if (match) {
@@ -31,7 +39,6 @@ module.exports = app => {
       .uniqBy("email", "surveyId")
       .each(({email, surveyId, choice}) => {
 
-        console.log(email, choice);
          Survey.updateOne({
             _id: surveyId,
             recipients: {
@@ -49,11 +56,7 @@ module.exports = app => {
     res.send({});
    
   });
-  app.post(
-    "/api/surveys/send",
-    requireAuth,
-    requireCredits,
-    async (req, res) => {
+  app.post( "/api/surveys/send", requireAuth, requireCredits, async (req, res) => {
       const { title, subject, body, recipients } = req.body;
       console.log(recipients);
       const newSurvey = new Survey({
