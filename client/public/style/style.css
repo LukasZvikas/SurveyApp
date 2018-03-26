@@ -1,26 +1,86 @@
-.navbar-nav-custom {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
+.header {
+  height: 7rem;
+  background-color: orange;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: var(--header-shadow);
+  background-color: #fff;
+  border-bottom: var(--grey-light2); }
 
-.navbar-item {
-    margin-right: 12px;
+.header-name {
+  display: flex;
+  align-items: center;
+  font-size: 3rem;
+  margin-left: 2rem; }
+  .header-name a {
+    color: #000; }
 
-}
-.navbar-brand {  
-    margin-left: 12px;
-}
-.nav-link{
-    color: #DCDCDC
-}
-.credits{
-   display: block;
-   padding: .5rem 1rem;
-   color: #DCDCDC;
-   text-transform: uppercase;
-}
+.header-nav {
+  display: flex;
+  align-items: center; }
+  .header-nav > * {
+    padding: 0 2rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    color: #000; }
+  .header-nav > *:hover:not(.payments) {
+    background-color: var(--grey-light2); }
+  .header-nav__payments {
+    padding: 1.6rem 2.4rem;
+    text-transform: uppercase;
+    font-size: 1.6rem;
+    background-color: var(--grey-light2);
+    color: #000;
+    border-radius: 4rem; }
+  .header-nav__payments:hover {
+    background-color: var(--color-primary); }
+  .header-nav a {
+    color: #000; }
+
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #FF3366;
+  --color-primary-dark: #BA265D;
+  --grey-light1: #faf9f9;
+  --grey-light2: #f4f2f2;
+  --grey-light3: #f0eeee;
+  --grey-light4: #ccc;
+  --grey-dark: #333;
+  --grey-dark2: #777;
+  --grey-dark3: #999;
+  --header-shadow: 0 2rem 6rem rgba(0,0,0,.3); }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  text-decoration: inherit; }
+
+html {
+  border-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  color: var(--grey-dark3);
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh; }
+
+.container {
+  max-width: 120rem;
+  margin: 8rem auto; }

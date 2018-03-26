@@ -4,47 +4,47 @@ import * as authActions from "../actions/authActions";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
 class Header extends Component {
-
   renderContent() {
     switch (this.props.auth.authenticated) {
       case true:
-        return [
-          <li key={1} className="credits">
-            Credits: {this.props.auth.credits}
-          </li>,
-          <div key={2}>
-            <Payments />
-          </div>,
-          <li key={3} className="nav-item">
-            <Link to="/logout" className="nav-link">
-              Log Out
-            </Link>
-          </li>
-        ];
+        return (
+          <div className="header-nav">
+            <nav key={1} className="header-nav__credits">
+              Credits: {this.props.auth.credits}
+            </nav>
+            <nav key={2} className="payments">
+              <Payments />
+            </nav>
+            <nav key={3} className="header-nav__logout">
+              <Link to="/logout">Log Out</Link>
+            </nav>
+          </div>
+        );
 
       default:
-        return [
-          <li key={1} className="nav-item">
-            <Link to="/signin" className="nav-link">
-              Sign In
-            </Link>
-          </li>,
-          <li key={2} className="nav-item">
-            <Link to="/signup" className="nav-link">
-              Sign Up
-            </Link>
-          </li>
-        ];
+        return (
+          <div className="header-nav">
+            <nav key={1} className="header-nav__signin">
+              <Link to="/signin">Sign In</Link>
+            </nav>
+            <nav key={2} className="header-nav__signup">
+              <Link to="/signup">Sign Up</Link>
+            </nav>
+          </div>
+        );
     }
   }
   render() {
     return (
-      <nav className="navbar navbar-dark bg-dark ">
-        <Link to="/" className="navbar-brand">
-          SurveyApp
-        </Link>
-        <ul className="navbar-nav-custom">{this.renderContent()}</ul>
-      </nav>
+      <div className="container">
+        <div className="header">
+          <header className="header-name">
+            <Link to="/">SurveyApp</Link>
+          </header>
+
+          {this.renderContent()}
+        </div>
+      </div>
     );
   }
 }
@@ -52,7 +52,6 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     auth: state.auth
-    
   };
 }
 

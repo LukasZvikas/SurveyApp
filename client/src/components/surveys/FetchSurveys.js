@@ -1,11 +1,12 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSurveys } from "../../actions/surveyActions";
 
 class FetchSurveys extends Component {
-  renderSurveys() {
-    return this.props.surveys.map(survey => {
+  renderSurveys(surveys) {
+    return _.map(surveys, survey => {
       return (
         <div className="jumbotron" key={survey._id}>
           <h2>Survey Title: {survey.title}</h2>
@@ -23,9 +24,11 @@ class FetchSurveys extends Component {
   }
 
   render() {
+
+    console.log(this.surveys)
     return (
       <div>
-        {this.renderSurveys()}
+        {this.renderSurveys(this.props.surveys.surveyList)}
         
         <Link to="/surveys/new" className="btn btn-primary">
           Add Survey
