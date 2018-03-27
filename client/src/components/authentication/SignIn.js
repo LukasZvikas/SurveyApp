@@ -29,13 +29,22 @@ class SignIn extends Component {
   render() {
     const { handleSubmit, form: { email, password } } = this.props;
     return (
-      <div className="container">
-        <form onSubmit={handleSubmit(this.onSignIn.bind(this))}>
+      <div className="form-container">
+        <div className="margin-bottom-big">
+          <h2 className="heading-primary">Sign In</h2>
+        </div>
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit(this.onSignIn.bind(this))}
+        >
           {this.renderFields()}
-          <button className="btn btn-primary" type="submit">
+          <button className="btn-submit" type="submit">
             Sign In
           </button>
         </form>
+        <div className="legal">
+          &copy; 2018 by SurveyApp, All rights reserved.
+        </div>
       </div>
     );
   }

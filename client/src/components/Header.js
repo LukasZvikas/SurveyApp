@@ -36,7 +36,7 @@ class Header extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="header-container">
         <div className="header">
           <header className="header-name">
             <Link to="/">SurveyApp</Link>

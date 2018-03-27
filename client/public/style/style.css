@@ -1,3 +1,7 @@
+.header-container {
+  max-width: 120rem;
+  margin: 6% 10% 0; }
+
 .header {
   height: 7rem;
   background-color: orange;
@@ -13,6 +17,7 @@
   font-size: 3rem;
   margin-left: 2rem; }
   .header-name a {
+    font-weight: 600;
     color: #000; }
 
 .header-nav {
@@ -38,7 +43,82 @@
   .header-nav__payments:hover {
     background-color: var(--color-primary); }
   .header-nav a {
+    font-weight: 600;
     color: #000; }
+
+.form-container {
+  max-width: 120rem;
+  margin: 0 10% 0;
+  background-color: var(--grey-light3);
+  height: 84vh;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center; }
+
+.btn-submit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 1.5rem 4rem;
+  border-radius: 4rem;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: none;
+  transition: all 0.3s; }
+  .btn-submit:hover {
+    background-color: var(--color-primary);
+    transform: translateY(3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3); }
+  .btn-submit:active {
+    outline: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); }
+  .btn-submit:focus {
+    outline: none; }
+
+.heading-primary {
+  font-size: 5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 6rem auto;
+  background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
+  display: inline-block;
+  -webkit-background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+  transition: all 1s; }
+  .heading-primary:hover {
+    transform: skewY(1deg) skewX(6deg); }
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase; }
+  .auth-form__input {
+    font-size: 1.5rem;
+    padding: 1.5rem 12rem;
+    border-radius: 4rem;
+    border: none;
+    display: block;
+    border-bottom: 3px transparent; }
+  .auth-form__input:focus {
+    outline: none;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid var(--color-primary); }
+  .auth-form__label {
+    text-align: center;
+    font-size: 2rem; }
+  .auth-form__danger {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    color: var(--color-primary); }
+
+.legal {
+  color: #000;
+  padding: 3rem 1.5rem;
+  font-weight: 600; }
 
 :root {
   --color-primary: #eb2f64;
@@ -51,6 +131,7 @@
   --grey-dark: #333;
   --grey-dark2: #777;
   --grey-dark3: #999;
+  --white: #fff;
   --header-shadow: 0 2rem 6rem rgba(0,0,0,.3); }
 
 * {
@@ -80,7 +161,3 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh; }
-
-.container {
-  max-width: 120rem;
-  margin: 8rem auto; }
