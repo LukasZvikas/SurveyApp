@@ -8,12 +8,14 @@ class FetchSurveys extends Component {
   renderSurveys(surveys) {
     return _.map(surveys, survey => {
       return (
-        <div className="jumbotron" key={survey._id}>
-          <h2>Survey Title: {survey.title}</h2>
-          <div>Survey Subject: {survey.subject}</div>
-          <div>Survey Content: {survey.body}</div>
-          <div>Yes: {survey.yes}</div>
-          <div>No: {survey.no}</div>
+        <div className="survey" key={survey._id}>
+          <h2 className="survey__label">SURVEY TITLE: {survey.title}</h2>
+          <div className="survey__subject">
+            SUBJECT: {survey.subject}
+          </div>
+          <div className="survey__content">CONTENT: {survey.body}</div>
+          <div className="survey__answer">YES: {survey.yes}</div>
+          <div className="survey__answer">NO: {survey.no}</div>
         </div>
       );
     });
@@ -24,13 +26,13 @@ class FetchSurveys extends Component {
   }
 
   render() {
-
-    console.log(this.surveys)
+    console.log(this.surveys);
     return (
-      <div>
+      <div className="form-container dashboard">
+        <div className="heading-primary dashboard">Your Surveys</div>
         {this.renderSurveys(this.props.surveys.surveyList)}
-        
-        <Link to="/surveys/new" className="btn btn-primary">
+
+        <Link to="/surveys/new" className="btn-submit add">
           Add Survey
         </Link>
       </div>

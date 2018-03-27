@@ -7,27 +7,28 @@
   justify-content: start;
   flex-direction: column;
   align-items: center;
+  box-shadow: 0 3rem 6rem rgba(0,0,0,.3);
 }
 
 .btn-submit {
   font-size: 1.5rem;
-  font-weight: 600;
   padding: 1.5rem 4rem;
   border-radius: 4rem;
   margin: 0 auto;
   text-transform: uppercase;
-  border: none;
   transition: all 0.3s;
+  border: 1px solid var(--color-primary);
+
 
   &:hover {
     background-color: var(--color-primary);
     transform: translateY(3px);
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
   }
-  
+
   &:active {
     outline: none;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    box-shadow: var(--header-shadow);
   }
 
   &:focus {
@@ -37,8 +38,8 @@
 
 .heading-primary {
   font-size: 5rem;
+  font-weight: 600;
   text-transform: uppercase;
-  font-weight: 700;
   margin: 6rem auto;
   background-image: linear-gradient(
     to right,
@@ -52,14 +53,13 @@
   transition: all 1s;
 
   &:hover {
-    transform: skewY(1deg) skewX(6deg);
+    // transform: skewY(1deg) skewX(6deg);
   }
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  font-weight: 600;
   color: #000;
   margin-bottom: 1.5rem;
   text-transform: uppercase;
@@ -94,5 +94,4 @@
 .legal {
   color: #000;
   padding: 3rem 1.5rem;
-  font-weight: 600;
 }
