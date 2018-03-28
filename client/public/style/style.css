@@ -120,11 +120,40 @@
   color: #000;
   padding: 3rem 1.5rem; }
 
-.form-container.dashboard {
-  overflow: auto; }
+.form-container {
+  font-size: 1.6rem; }
+  .form-container.dashboard {
+    overflow: auto; }
 
 .heading-primary.dashboard {
-  margin: 4rem 0 auto; }
+  justify-content: center;
+  margin: 4rem; }
+
+.search {
+  margin: 5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  .search__input {
+    padding: 1.4rem 12rem;
+    border-radius: 10rem;
+    background-color: var(--white);
+    color: inherit;
+    border: none;
+    font-size: inherit;
+    margin-right: -3rem;
+    width: 90%;
+    transition: all 0.2s; }
+  .search__input:focus {
+    outline: none;
+    width: 100%;
+    border: 1px solid var(--color-primary); }
+  .search::placeholder {
+    text-align: left;
+    font-weight: 100;
+    color: var(--grey-light4); }
+  .search__icon {
+    background-color: var(--white); }
 
 .btn-submit.add {
   margin: 3.5rem 0 7rem 0;
