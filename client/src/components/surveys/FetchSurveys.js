@@ -1,20 +1,20 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSurveys } from "../../actions/surveyActions";
-import SearchBar from "./surveySearchBar";
-import store from "../../reducers/index";
 
 class FetchSurveys extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { search: "", currentlyDisplayed: "" };
+    this.state = { search: "" };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ currentlyDisplayed: nextProps.surveys });
+  componentDidMount(props) {
+    this.props.fetchSurveys();
   }
+
   renderSurveys(surveys) {
     return surveys.map(survey => {
       return (
@@ -28,26 +28,21 @@ class FetchSurveys extends Component {
       );
     });
   }
-
-  componentDidMount(props) {
-    this.props.fetchSurveys();
-    this.setState({ search: "" });
-  }
-
   updateSearch(event) {
-    this.setState({ search: event.target.value });
+    this.setState({ search: event.target.value.substr(0, 20) });
   }
   render() {
     const surveyList = this.props.surveys.filter(survey => {
-      return survey.title.indexOf(this.state.search);
+      return survey.title.toLowerCase().indexOf(this.state.search.toLowerCase()) != -1;
     });
+    console.log(surveyList);
     return (
       <div>
         <div>
           <input
             type="text"
             value={this.state.search}
-            onChange={this.updateSearch.bind(this)}
+            onChange={event => this.updateSearch(event)}
           />
         </div>
         {this.renderSurveys(surveyList)}
@@ -61,6 +56,7 @@ class FetchSurveys extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return { surveys: state.surveys };
 }
 
