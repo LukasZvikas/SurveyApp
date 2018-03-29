@@ -3,32 +3,35 @@ import React from "react";
 import { connect } from "react-redux";
 import surveyTypes from "./surveyTypes";
 import * as surveyActions from "../../actions/surveyActions";
+import Footer from "../footer";
 
 const SurveyFormReview = ({ onCancel, formVals, sendSurvey }) => {
-
   const formReviewFields = _.map(surveyTypes, ({ label, name }) => {
     return (
-      <div key={name}>
+      <div className="form-review">
         <div>
           <h4>{label}</h4>
         </div>
         {formVals[name]}
-        <div style={{ marginBottom: "10px" }} />
       </div>
     );
   });
   return (
-    <div className="container jumbotron">
-      {formReviewFields}
-      <button className="btn btn-warning" onClick={onCancel}>
-        Back
-      </button>
-      <button
-        onClick={() => sendSurvey(formVals)}
-        className="btn btn-success right float-right"
-      >
-        Send Survey
-      </button>
+    <div className="form-container dashboard">
+      <div className="heading-primary dashboard">Review Survey</div>
+      <div className="survey">{formReviewFields}</div>
+      <div className="survey-buttons review">
+        <button className="btn-submit add form" onClick={onCancel}>
+          Back
+        </button>
+        <button
+          onClick={() => sendSurvey(formVals)}
+          className="btn-submit add form"
+        >
+          Send Survey
+        </button>
+      </div>
+      <Footer />
     </div>
   );
 };

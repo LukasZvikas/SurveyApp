@@ -28,14 +28,12 @@ class SurveyForm extends Component {
     return (
       <div className="form-container dashboard">
         <div className="heading-primary dashboard">New Survey</div>
-        <form
-          onSubmit={this.props.handleSubmit(this.props.onNext)}
-        >
+        <form onSubmit={this.props.handleSubmit(this.props.onNext)}>
           {this.renderFields()}
           <div className="survey-buttons">
-            
-              <Link className="btn-submit add form" to="/">Back</Link>
-            
+            <Link className="btn-submit add form" to="/">
+              Back
+            </Link>
 
             <button type="submit" className="btn-submit add form">
               Next
