@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import * as authActions from "../../actions/authActions";
 import { connect } from "react-redux";
-import authFields from "./authFields";
+import authFields from "../formFields";
 import authTypes from "./authTypes";
+import Footer from '../footer';
 
 class SignUp extends Component {
   renderFields() {
@@ -42,9 +43,7 @@ class SignUp extends Component {
             Sign Up
           </button>
         </form>
-        <div className="legal">
-          &copy; 2018 by SurveyApp, All rights reserved.
-        </div>
+        <Footer />
       </div>
     );
   }

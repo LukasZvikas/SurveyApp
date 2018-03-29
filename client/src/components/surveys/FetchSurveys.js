@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSurveys } from "../../actions/surveyActions";
 import searchLogo from "../../logos/magnifying-glass.svg";
+import Footer from '../footer';
 
 class FetchSurveys extends Component {
   constructor(props) {
@@ -58,6 +59,8 @@ class FetchSurveys extends Component {
         <Link to="/surveys/new" className="btn-submit add">
           Add Survey
         </Link>
+        <Footer />
+
       </div>
     );
   }

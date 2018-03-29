@@ -1,3 +1,6 @@
+/////DASHBOARD
+//////////////////////////////////////////
+
 .form-container {
 
   font-size: 1.6rem;
@@ -10,12 +13,12 @@
 .heading-primary {
   &.dashboard {
     justify-content: center;
-    margin: 4rem;
+    
   }
 }
 
 .search {
-  margin: 5rem auto;
+  margin: 6rem auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,7 +55,7 @@
 
 .btn-submit {
   &.add {
-    margin: 3.5rem 0 7rem 0;
+    margin: 3.5rem 0 3.5rem 0;
     background-color: var(--white);
     color: #000;
     border: 1px solid var(--color-primary);
@@ -88,12 +91,12 @@
     display: inline-block;
   }
 
-  &__subject {
-  }
+  // &__subject {
+  // }
 
-  &__content {
-  }
+  // &__content {
+  // }
 
-  &__answer {
-  }
+  // &__answer {
+  // }
 }

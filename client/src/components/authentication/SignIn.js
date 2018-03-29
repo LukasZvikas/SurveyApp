@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import authTypes from "./authTypes";
-import authFields from "./authFields";
+import authFields from "../formFields";
 import * as authActions from "../../actions/authActions";
+import Footer from '../footer';
 
 class SignIn extends Component {
   renderFields() {
@@ -30,9 +31,7 @@ class SignIn extends Component {
     const { handleSubmit, form: { email, password } } = this.props;
     return (
       <div className="form-container">
-        <div className="margin-bottom-big">
           <h2 className="heading-primary">Sign In</h2>
-        </div>
         <form
           className="auth-form"
           onSubmit={handleSubmit(this.onSignIn.bind(this))}
@@ -42,9 +41,7 @@ class SignIn extends Component {
             Sign In
           </button>
         </form>
-        <div className="legal">
-          &copy; 2018 by SurveyApp, All rights reserved.
-        </div>
+        <Footer />
       </div>
     );
   }
