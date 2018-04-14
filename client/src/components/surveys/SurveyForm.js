@@ -2,15 +2,10 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import surveyTypes from "./surveyTypes";
-<<<<<<< HEAD
-import SurveyFields from "./SurveyFields";
-import emailValidation from "../../utilities/emailValidation";
-=======
 import SurveyFields from "../formFields";
 import emailValidation from "../../utilities/emailValidation";
 import { Link } from "react-router-dom";
 import Footer from "../footer";
->>>>>>> sass
 
 class SurveyForm extends Component {
   renderFields() {
@@ -29,17 +24,7 @@ class SurveyForm extends Component {
   }
 
   render() {
-    console.log(this.props.form);
     return (
-<<<<<<< HEAD
-      <div className="container">
-        <form onSubmit={this.props.handleSubmit(this.props.onNext)}>
-          {this.renderFields()}
-          <button type="submit" className="btn btn-primary">
-            Next
-          </button>
-        </form>
-=======
       <div className="form-container dashboard">
         <div className="heading-primary dashboard">New Survey</div>
         <form onSubmit={this.props.handleSubmit(this.props.onNext)}>
@@ -55,7 +40,6 @@ class SurveyForm extends Component {
           </div>
         </form>
         <Footer />
->>>>>>> sass
       </div>
     );
   }
@@ -63,17 +47,10 @@ class SurveyForm extends Component {
 
 function validate(values) {
   const errors = {};
-<<<<<<< HEAD
- 
-  	errors.recipients = emailValidation(values.recipients || '')
-
-    _.each(surveyTypes, ({name}) => {
-=======
 
   errors.recipients = emailValidation(values.recipients || "");
 
   _.each(surveyTypes, ({ name }) => {
->>>>>>> sass
     if (!values[name]) {
       errors[name] = "Please complete this field";
     }
@@ -81,15 +58,9 @@ function validate(values) {
 
   return errors;
 }
+
 export default reduxForm({
   validate,
   form: "SurveyForm",
   destroyOnUnmount: false
 })(SurveyForm);
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> sass
