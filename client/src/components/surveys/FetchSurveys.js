@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchSurveys } from "../../actions/surveyActions";
-import searchLogo from "../../logos/magnifying-glass.svg";
+import searchLogo from "../../img/magnifying-glass.svg";
 import Footer from '../footer';
 
 class FetchSurveys extends Component {
