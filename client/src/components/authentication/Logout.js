@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as authActions from "../../actions/authActions";
 
 class Logout extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.Logout();
   }
   render() {

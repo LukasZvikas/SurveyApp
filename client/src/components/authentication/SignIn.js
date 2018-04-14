@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { connect } from "react-redux";
 import authTypes from "./authTypes";
-import authFields from "./authFields";
+import authFields from "../formFields";
 import * as authActions from "../../actions/authActions";
+import Footer from '../footer';
 
 class SignIn extends Component {
   renderFields() {
@@ -29,13 +30,18 @@ class SignIn extends Component {
   render() {
     const { handleSubmit, form: { email, password } } = this.props;
     return (
-      <div className="container">
-        <form onSubmit={handleSubmit(this.onSignIn.bind(this))}>
+      <div className="form-container">
+          <h2 className="heading-primary">Sign In</h2>
+        <form
+          className="auth-form"
+          onSubmit={handleSubmit(this.onSignIn.bind(this))}
+        >
           {this.renderFields()}
-          <button className="btn btn-primary" type="submit">
+          <button className="btn-submit" type="submit">
             Sign In
           </button>
         </form>
+        <Footer />
       </div>
     );
   }
