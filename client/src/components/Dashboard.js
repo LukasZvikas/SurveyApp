@@ -1,14 +1,15 @@
 import React, { Component } from "react";
+import FetchSurveys from "./surveys/FetchSurveys";
 import { connect } from "react-redux";
-import * as authActions from "../actions/authActions";
 
 class Dashboard extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
   render() {
-    return <h2>Dashboard</h2>;
+    return <div>{this.props.auth.authenticated ? <FetchSurveys /> : <div>Please Sign Up or Log In</div>}</div>;
   }
 }
 
-export default connect(null, authActions)(Dashboard);
+function mapStateToProps(state) {
+  return { auth: state.auth };
+}
+
+export default connect(mapStateToProps)(Dashboard);

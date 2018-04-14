@@ -6,11 +6,12 @@
     "/user/*": {
       "target": "http://localhost:5000"
     },
-    "/api/stripe": {
+    "/api/*": {
       "target": "http://localhost:5000"
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "history": "^4.7.2",
     "lodash": "^4.17.5",
     "react": "^16.2.0",
@@ -19,6 +20,7 @@
     "react-scripts": "1.1.1",
     "react-stripe-checkout": "^2.6.3",
     "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
     "redux-thunk": "^2.2.0"
   },
   "scripts": {

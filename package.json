@@ -10,7 +10,8 @@
     "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server \" \"npm run client\"",
+    "dev": "concurrently \"npm run server \" \"npm run client\" \"npm run localtunnel\"",
+    "localtunnel": "./sendgrid-webhook-fix.sh",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "author": "",
@@ -25,15 +26,19 @@
     "express": "^4.16.2",
     "history": "^4.7.2",
     "jwt-simple": "^0.5.1",
+    "localtunnel": "^1.8.3",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.9",
     "nodemon": "^1.17.1",
     "passport": "^0.4.0",
     "passport-jwt": "^3.0.1",
     "passport-local": "^1.0.0",
+    "path-parser": "^3.0.1",
     "react-router-dom": "^4.2.2",
     "react-stripe-checkout": "^2.6.3",
     "redux-form": "^7.3.0",
+    "save": "^2.3.2",
+    "sendgrid": "^5.2.3",
     "stripe": "^5.5.0"
   }
 }
