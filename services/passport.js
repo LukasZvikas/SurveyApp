@@ -29,6 +29,8 @@ const localOptions = { usernameField: "email" };
 
 passport.use(
   new localPassport(localOptions, (email, password, done) => {
+    console.log(email)
+    console.log(password)
     User.findOne({ email: email }, (err, user) => {
       if (err) {
         return done(err);

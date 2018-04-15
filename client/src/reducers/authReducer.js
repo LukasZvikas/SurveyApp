@@ -1,5 +1,5 @@
 
-import {FETCH_USER, AUTH_USER, LOG_OUT } from '../actions/types';
+import {FETCH_USER, AUTH_USER, LOG_OUT, AUTH_ERROR } from '../actions/types';
 
 export default (state={}, action) => {
 	switch(action.type){
@@ -8,7 +8,9 @@ export default (state={}, action) => {
 		case AUTH_USER: 
 			return {...state, authenticated: true};
 		case LOG_OUT:
-			return {...state, authenticated: false}
+			return {...state, authenticated: false};
+		case AUTH_ERROR: 
+			return {...state, error: action.payload};
 		default:
 			return state;
 	}

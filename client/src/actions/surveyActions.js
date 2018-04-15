@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, FETCH_SURVEYS } from "./types";
+import { FETCH_USER, FETCH_SURVEYS} from "./types";
 import history from "../utilities/history";
 
 export const sendSurvey = survey => async dispatch => {
@@ -16,6 +16,17 @@ export const fetchSurveys = () => async dispatch => {
   const res = await axios.get("/api/surveys", {
     headers: { authorization: localStorage.getItem("token") }
   });
+
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
+
+export const deleteSurvey = survey => async dispatch => {
+	console.log(survey);
+  const res = await axios.post("/api/surveys/delete", survey, {
+    headers: { authorization: localStorage.getItem("token") }
+  });
+
+  history.push("/");
 
   dispatch({ type: FETCH_SURVEYS, payload: res.data });
 };

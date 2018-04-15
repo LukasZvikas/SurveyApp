@@ -2,7 +2,7 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import surveyTypes from "./surveyTypes";
-import SurveyFields from "../formFields";
+import {surveyField} from "../formFields";
 import emailValidation from "../../utilities/emailValidation";
 import { Link } from "react-router-dom";
 import Footer from "../footer";
@@ -16,7 +16,7 @@ class SurveyForm extends Component {
           label={label}
           name={name}
           type="text"
-          component={SurveyFields}
+          component={surveyField}
         />
       );
     });

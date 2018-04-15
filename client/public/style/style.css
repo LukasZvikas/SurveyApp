@@ -74,9 +74,11 @@
 
 .btn-submit {
   font-size: 1.5rem;
-  padding: 1.5rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 4rem;
-  margin: 0 auto;
+  margin-top: 3rem;
+  margin-left: 12rem;
+  margin-right: 12rem;
   text-transform: uppercase;
   transition: all 0.3s;
   border: 1px solid var(--color-primary); }
@@ -108,10 +110,11 @@
   transition: all 1s; }
 
 .auth-form {
+  border: none;
   display: flex;
   flex-direction: column;
   color: #000;
-  margin: 1.2rem auto;
+  margin: 2rem auto;
   text-transform: uppercase; }
   .auth-form__input {
     font-size: 1.5rem;
@@ -134,7 +137,7 @@
 
 .legal {
   color: #000;
-  padding: 3rem 1.5rem;
+  padding: 2.2rem 1.5rem;
   font-size: 1.2rem; }
 
 .form-container {
@@ -172,6 +175,7 @@
     background-color: var(--white); }
 
 .btn-submit.add {
+  padding: 2rem 4rem;
   margin: 3.5rem 0 3.5rem 0;
   background-color: var(--white);
   color: #000;
@@ -192,13 +196,23 @@
   font-size: 1.35rem;
   display: inline-block;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3);
-  transition: 0.4s; }
+  transition: 0.4s;
+  position: relative; }
   .survey > * {
     margin: 2rem 2rem; }
   .survey:hover {
     transform: skewX(-2deg); }
   .survey__label {
     display: inline-block; }
+  .survey__button {
+    position: absolute;
+    background-color: white;
+    border: none;
+    top: 50%;
+    left: 84%;
+    transform: translate(0%, -100%); }
+  .survey__icon {
+    height: 3.5rem; }
 
 .feature-box {
   display: flex;
