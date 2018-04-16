@@ -1,13 +1,12 @@
 .header-container {
   margin: 8rem 10% 0;
 
-  @media only screen and (max-width: 1200px){
+  @media only screen and (max-width: $bp-largest) {
     margin: 0;
   }
 }
 .header {
   height: 7rem;
-  background-color: orange;
   display: flex;
   justify-content: space-between;
   box-shadow: var(--header-shadow);
@@ -38,6 +37,9 @@
     font-size: 1.6rem;
     text-transform: uppercase;
     color: #000;
+    @media only screen and (max-width: $bp-smallest) {
+      font-size: 2rem;
+    }
   }
 
   & > *:hover:not(.payments) {

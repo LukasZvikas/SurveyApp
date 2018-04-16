@@ -8,7 +8,7 @@ export default (state={}, action) => {
 		case AUTH_USER: 
 			return {...state, authenticated: true};
 		case LOG_OUT:
-			return {...state, authenticated: false};
+			return {authenticated: false};
 		case AUTH_ERROR: 
 			return {...state, error: action.payload};
 		default:
