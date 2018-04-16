@@ -31,6 +31,8 @@
  --header-shadow: 0 2rem 6rem rgba(0,0,0,.3);
 }
 
+$bp-largest: 75em;
+
 
 * {
   margin: 0;
@@ -61,7 +63,6 @@ body {
   background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: 100vh;
 }
 
 

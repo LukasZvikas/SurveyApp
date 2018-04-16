@@ -1,5 +1,8 @@
 .header-container {
-  margin: 6% 10% 0; }
+  margin: 8rem 10% 0; }
+  @media only screen and (max-width: 1200px) {
+    .header-container {
+      margin: 0; } }
 
 .header {
   height: 7rem;
@@ -51,14 +54,16 @@
     color: #000; }
 
 .form-container {
-  margin: 0 10% 0;
+  margin: 0 10% 8rem;
   background-color: var(--grey-light3);
-  height: 83vh;
   display: flex;
   justify-content: start;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3); }
+  @media only screen and (max-width: 1200px) {
+    .form-container {
+      margin: 0; } }
 
 .survey-buttons {
   display: flex;
@@ -359,5 +364,4 @@ body {
   line-height: 1.6;
   background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
   background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh; }
+  background-repeat: no-repeat; }
