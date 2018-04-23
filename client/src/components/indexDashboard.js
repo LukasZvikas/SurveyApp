@@ -10,7 +10,7 @@ const IndexDashboard = () => {
   return (
     <div className="form-container">
       <div className="index-page">
-        <div className="heading-primary index">What We Offer</div>
+        <div className="heading-primary index offer">What We Offer</div>
         <div className="feature-box">
           <div className="feature">
             <div className="feature__content">

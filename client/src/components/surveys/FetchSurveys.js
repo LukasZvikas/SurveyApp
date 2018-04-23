@@ -2,8 +2,9 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { fetchSurveys } from "../../actions/surveyActions";
+import * as surveyActions from "../../actions/surveyActions";
 import searchLogo from "../../img/magnifying-glass.svg";
+import trashLogo from "../../img/trash.svg";
 import Footer from "../footer";
 
 class FetchSurveys extends Component {
@@ -19,6 +20,7 @@ class FetchSurveys extends Component {
 
   renderSurveys(surveys) {
     return surveys.map(survey => {
+      console.log(survey)
       return (
         <div className="survey" key={survey._id}>
           <h2 className="survey__label">SURVEY TITLE: {survey.title}</h2>
@@ -26,6 +28,12 @@ class FetchSurveys extends Component {
           <div className="survey__content">CONTENT: {survey.body}</div>
           <div className="survey__answer">YES: {survey.yes}</div>
           <div className="survey__answer">NO: {survey.no}</div>
+          <button
+            className="survey__button"
+            onClick = {() => {this.props.deleteSurvey(survey)}}
+          >
+            <img className="survey__icon" src={trashLogo} />
+          </button>
         </div>
       );
     });
@@ -34,12 +42,14 @@ class FetchSurveys extends Component {
     this.setState({ search: event.target.value.substr(0, 20) });
   }
   render() {
+
+    console.log(this.props);
     const surveyList = this.props.surveys.filter(survey => {
       return (
-        survey.title.toLowerCase().indexOf(this.state.search.toLowerCase()) != -1
+        survey.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !=
+        -1
       );
     });
-
     return (
       <div className="form-container dashboard">
         <div className="heading-primary dashboard">Your Surveys</div>
@@ -70,4 +80,4 @@ function mapStateToProps(state) {
   return { surveys: state.surveys };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(FetchSurveys);
+export default connect(mapStateToProps, surveyActions)(FetchSurveys);

@@ -8,15 +8,8 @@ import Logout from "./authentication/Logout";
 import SurveyNew from "./surveys/SurveyNew";
 import history from "../utilities/history";
 import { Router, Switch, Route } from "react-router-dom";
-import * as authActions from "../actions/authActions";
-
-import { fetchUser } from "../actions/authActions";
 
 class App extends Component {
-  componentDidMount() {
-    this.props.fetchUser();
-  }
-
   renderContent() {
     switch (this.props.auth.authenticated) {
       case true:
@@ -66,4 +59,4 @@ function mapStateToProps(state) {
   return { auth: state.auth };
 }
 
-export default connect(mapStateToProps, authActions)(App);
+export default connect(mapStateToProps)(App);

@@ -6,22 +6,22 @@ const requireAuth = passport.authenticate("jwt", { session: false });
 const requireCredits = require("../middlewares/requireCredits");
 const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
-const Survey = require('../model/Surveys');
+const Survey = require("../model/Surveys");
+const User = require("../model/User");
 
 module.exports = app => {
-
-  app.get('/api/surveys', requireAuth, async (req, res) => {
-
-    const Surveys = await Survey.find({_createdBy: req.user.id}).select({recipients: false});
+  app.get("/api/surveys", requireAuth, async (req, res) => {
+    const Surveys = await Survey.find({ _createdBy: req.user.id }).select({
+      recipients: false
+    });
 
     res.send(Surveys);
-
-  })
+  });
 
   app.post("/api/surveys/localtunnel", (req, res) => {
     const p = new pathParser("/api/surveys/:surveyId/:choice");
 
-     _.chain(req.body)
+    _.chain(req.body)
       .map(event => {
         //takes only the pathname of the url, does not include the domain
         const pathname = new URL(event.url).pathname;
@@ -37,28 +37,47 @@ module.exports = app => {
       })
       .compact()
       .uniqBy("email", "surveyId")
-      .each(({email, surveyId, choice}) => {
-
-         Survey.updateOne({
+      .each(({ email, surveyId, choice }) => {
+        Survey.updateOne(
+          {
             _id: surveyId,
             recipients: {
-              $elemMatch: { email: email, responded: false}        
+              $elemMatch: { email: email, responded: false }
             }
-        }, {
-
-        $inc: { [choice]: 1},
-        $set: { 'recipients.$.responded': true}
-        }).exec();
+          },
+          {
+            $inc: { [choice]: 1 },
+            $set: { "recipients.$.responded": true }
+          }
+        ).exec();
       })
       .value();
 
-   
     res.send({});
-   
   });
-  app.post( "/api/surveys/send", requireAuth, requireCredits, async (req, res) => {
+
+  app.post("/api/surveys/delete", requireAuth, async (req, res) => {
+    const id = req.body._id;
+
+    const userID = req.user._id;
+
+    const deleteSurvey = await Survey.findByIdAndRemove({ _id: id });
+
+    try {
+      const Surveys = await Survey.find({ _createdBy: userID });
+
+      res.send(Surveys);
+    } catch (err) {
+      res.status(422).send(err);
+    }
+  });
+
+  app.post(
+    "/api/surveys/send",
+    requireAuth,
+    requireCredits,
+    async (req, res) => {
       const { title, subject, body, recipients } = req.body;
-      console.log(recipients);
       const newSurvey = new Survey({
         title,
         subject,

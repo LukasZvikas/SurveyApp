@@ -1,9 +1,58 @@
+:root {
+  --color-primary: #eb2f64;
+  --color-primary-light: #ff3366;
+  --color-primary-dark: #ba265d;
+  --grey-light1: #faf9f9;
+  --grey-light2: #f4f2f2;
+  --grey-light3: #f0eeee;
+  --grey-light4: #ccc;
+  --grey-dark: #333;
+  --grey-dark2: #777;
+  --grey-dark3: #999;
+  --white: #fff;
+  --header-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3); }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  text-decoration: inherit; }
+
+html {
+  border-sizing: border-box;
+  font-size: 62.5%; }
+  @media only screen and (max-width: 68.75em) {
+    html {
+      font-size: 50%; } }
+  @media only screen and (max-width: 34.38em) {
+    html {
+      font-size: 35%; } }
+
+body {
+  color: var(--grey-dark3);
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
+  background-size: cover;
+  background-repeat: no-repeat; }
+
 .header-container {
-  margin: 6% 10% 0; }
+  margin: 8rem 10% 0; }
+  @media only screen and (max-width: 78em) {
+    .header-container {
+      margin: 0; } }
 
 .header {
   height: 7rem;
-  background-color: orange;
   display: flex;
   justify-content: space-between;
   box-shadow: var(--header-shadow);
@@ -31,6 +80,9 @@
     font-size: 1.6rem;
     text-transform: uppercase;
     color: #000; }
+    @media only screen and (max-width: 26.5em) {
+      .header-nav > * {
+        font-size: 2rem; } }
   .header-nav > *:hover:not(.payments) {
     background-color: var(--grey-light2); }
   .header-nav__payments {
@@ -51,14 +103,21 @@
     color: #000; }
 
 .form-container {
-  margin: 0 10% 0;
+  margin: 0 10% 8rem;
   background-color: var(--grey-light3);
-  height: 83vh;
   display: flex;
   justify-content: start;
   flex-direction: column;
   align-items: center;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3); }
+  @media only screen and (max-width: 78em) {
+    .form-container {
+      margin: 0;
+      height: 100vh;
+      width: 100%; } }
+
+.form-container.sign {
+  height: 77vh; }
 
 .survey-buttons {
   display: flex;
@@ -74,9 +133,11 @@
 
 .btn-submit {
   font-size: 1.5rem;
-  padding: 1.5rem 4rem;
+  padding: 2rem 4rem;
   border-radius: 4rem;
-  margin: 0 auto;
+  margin-top: 3rem;
+  margin-left: 12rem;
+  margin-right: 12rem;
   text-transform: uppercase;
   transition: all 0.3s;
   border: 1px solid var(--color-primary); }
@@ -99,7 +160,6 @@
   font-size: 5rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin: 3rem;
   background-image: linear-gradient(to right, var(--color-primary-dark), var(--color-primary-light));
   display: inline-block;
   -webkit-background-clip: text;
@@ -108,10 +168,11 @@
   transition: all 1s; }
 
 .auth-form {
+  border: none;
   display: flex;
   flex-direction: column;
   color: #000;
-  margin: 1.2rem auto;
+  margin: 2rem auto;
   text-transform: uppercase; }
   .auth-form__input {
     font-size: 1.5rem;
@@ -134,7 +195,7 @@
 
 .legal {
   color: #000;
-  padding: 3rem 1.5rem;
+  padding: 2.2rem 1.5rem;
   font-size: 1.2rem; }
 
 .form-container {
@@ -172,6 +233,7 @@
     background-color: var(--white); }
 
 .btn-submit.add {
+  padding: 2rem 4rem;
   margin: 3.5rem 0 3.5rem 0;
   background-color: var(--white);
   color: #000;
@@ -192,22 +254,39 @@
   font-size: 1.35rem;
   display: inline-block;
   box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.3);
-  transition: 0.4s; }
+  transition: 0.4s;
+  position: relative; }
   .survey > * {
     margin: 2rem 2rem; }
   .survey:hover {
     transform: skewX(-2deg); }
   .survey__label {
     display: inline-block; }
+  .survey__button {
+    position: absolute;
+    background-color: white;
+    border: none;
+    top: 50%;
+    left: 84%;
+    transform: translate(0%, -100%); }
+  .survey__icon {
+    height: 3.5rem; }
 
 .feature-box {
   display: flex;
   justify-content: space-around;
   width: 100%;
   margin: 3rem auto; }
+  @media only screen and (max-width: 56.2em) {
+    .feature-box {
+      flex-direction: column;
+      align-items: center; } }
 
 .heading-primary.index {
   text-align: center; }
+
+.heading-primary.offer {
+  margin-top: 3rem; }
 
 .feature {
   background-color: var(--white);
@@ -220,6 +299,15 @@
   box-shadow: var(--header-shadow);
   transition: all 0.2s;
   font-size: 2rem; }
+  @media only screen and (max-width: 56.2em) {
+    .feature {
+      width: 44rem;
+      height: 30rem;
+      margin: 2rem; } }
+  @media only screen and (max-width: 34.38em) {
+    .feature {
+      width: 34rem;
+      height: 25rem; } }
   .feature__content {
     display: flex;
     justify-content: center;
@@ -230,15 +318,24 @@
   .feature__item {
     text-align: center;
     margin: 0.6rem 3rem; }
+    @media only screen and (max-width: 56.2em) {
+      .feature__item {
+        margin: 0.6rem 6rem; } }
     .feature__item.heading {
       font-weight: 600;
       text-transform: uppercase;
       font-size: 2rem;
       color: var(--grey-dark); }
+      @media only screen and (max-width: 56.2em) {
+        .feature__item.heading {
+          font-size: 3.2rem; } }
     .feature__item.text {
       font-size: 1.6rem;
       text-align: left;
       color: var(--grey-dark2); }
+      @media only screen and (max-width: 56.2em) {
+        .feature__item.text {
+          font-size: 2.6rem; } }
     .feature__item.icon {
       height: 3.5rem; }
 
@@ -251,6 +348,15 @@
   margin: 3rem 20rem;
   margin-bottom: 8rem;
   background-color: var(--white); }
+  @media only screen and (max-width: 56.2em) {
+    .reviews {
+      height: 40rem;
+      padding: 4;
+      transform: skewX(0deg);
+      margin: 4rem 10rem; } }
+  @media only screen and (max-width: 26.5em) {
+    .reviews {
+      height: 46rem; } }
   .reviews__shape {
     width: 15rem;
     height: 15rem;
@@ -263,6 +369,16 @@
     transform: skewX(6deg);
     backface-visibility: hidden;
     margin-top: -1rem; }
+    @media only screen and (max-width: 56.2em) {
+      .reviews__shape {
+        float: none;
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%); } }
+    @media only screen and (max-width: 26.5em) {
+      .reviews__shape {
+        top: 40%; } }
   .reviews__img {
     width: 100%;
     height: 100%;
@@ -293,57 +409,33 @@
     color: var(--grey-dark);
     padding-left: 1.6rem;
     font-size: 2rem; }
+    @media only screen and (max-width: 56.2em) {
+      .reviews__heading {
+        text-align: center;
+        transform: skewX(0deg);
+        display: initial; } }
   .reviews__text {
     display: flex;
     color: var(--grey-dark2);
     text-align: left;
     transform: skewX(6deg);
     line-height: 3rem;
-    padding-left: 2rem;
-    font-size: 1.8rem; }
+    padding-left: 2rem; }
+    @media only screen and (max-width: 56.2em) {
+      .reviews__text {
+        text-align: center;
+        transform: skewX(0deg);
+        padding: 1rem 10rem; } }
+    @media only screen and (max-width: 46.9em) {
+      .reviews__text {
+        margin: 0;
+        padding: 0;
+        font-size: 1.6rem; } }
+    @media only screen and (max-width: 34.38em) {
+      .reviews__text {
+        margin: 0;
+        padding: 0; } }
 
 .index-page {
   overflow: auto;
   text-align: center; }
-
-:root {
-  --color-primary: #eb2f64;
-  --color-primary-light: #FF3366;
-  --color-primary-dark: #BA265D;
-  --grey-light1: #faf9f9;
-  --grey-light2: #f4f2f2;
-  --grey-light3: #f0eeee;
-  --grey-light4: #ccc;
-  --grey-dark: #333;
-  --grey-dark2: #777;
-  --grey-dark3: #999;
-  --white: #fff;
-  --header-shadow: 0 2rem 6rem rgba(0,0,0,.3); }
-
-* {
-  margin: 0;
-  padding: 0; }
-
-*,
-*:after,
-*:before {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-  text-decoration: inherit; }
-
-html {
-  border-sizing: border-box;
-  font-size: 62.5%; }
-
-body {
-  color: var(--grey-dark3);
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 400;
-  line-height: 1.6;
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary-dark));
-  background-size: cover;
-  background-repeat: no-repeat;
-  min-height: 100vh; }

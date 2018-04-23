@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FETCH_USER, AUTH_USER, LOG_OUT } from "./types";
+import { FETCH_USER, AUTH_USER, LOG_OUT, AUTH_ERROR } from "./types";
 import history from "../utilities/history";
 
 export const fetchUser = () => async dispatch => {
@@ -10,13 +10,17 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const SignUserUp = ({ email, password }) => async dispatch => {
-  const res = await axios.post("/user/signup", { email, password });
+  try {
+    const res = await axios.post("/user/signup", { email, password });
 
-  dispatch({ type: AUTH_USER });
+    dispatch({ type: AUTH_USER });
 
-  localStorage.setItem("token", res.data.token);
+    localStorage.setItem("token", res.data.token);
 
-  history.push("/");
+    history.push("/");
+  } catch (error) {
+    dispatch(authError("Your Input Is Not Valid. Please, Try again."));
+  }
 };
 
 export const SignUserIn = ({ email, password }) => async dispatch => {
@@ -25,6 +29,10 @@ export const SignUserIn = ({ email, password }) => async dispatch => {
   localStorage.setItem("token", res.data.token);
 
   history.push("/");
+};
+
+export const authError = error => {
+  return { type: AUTH_ERROR, payload: error };
 };
 
 export const Logout = () => {
