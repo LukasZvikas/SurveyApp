@@ -116,6 +116,9 @@ body {
       height: 100vh;
       width: 100%; } }
 
+.form-container.sign {
+  height: 77vh; }
+
 .survey-buttons {
   display: flex;
   align-items: end;

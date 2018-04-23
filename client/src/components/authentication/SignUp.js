@@ -26,7 +26,7 @@ class SignUp extends Component {
       fields: { email, password, passwordConfirm }
     } = this.props;
     return (
-      <div className="form-container">
+      <div className="form-container sign">
         <h2 className="heading-primary">Sign Up</h2>
         <form
           className="auth-form"
