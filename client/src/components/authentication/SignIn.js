@@ -14,7 +14,6 @@ class SignIn extends Component {
   }
 
   render() {
-    console.log(this.state);
     const { handleSubmit, form: { email, password } } = this.props;
     return (
       <div className="form-container sign">
