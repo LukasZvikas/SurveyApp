@@ -5,7 +5,7 @@ import surveyTypes from "./surveyTypes";
 import * as surveyActions from "../../actions/surveyActions";
 import Footer from "../footer";
 
-const SurveyFormReview = ({ onCancel, formVals, sendSurvey }) => {
+const SurveyFormReview = ({ onCancel, formVals, user, sendSurvey }) => {
   const formReviewFields = _.map(surveyTypes, ({ label, name }) => {
     return (
       <div className="form-review">
@@ -17,6 +17,9 @@ const SurveyFormReview = ({ onCancel, formVals, sendSurvey }) => {
       </div>
     );
   });
+
+
+  console.log(user.credits);
   return (
     <div className="form-container dashboard">
       <div className="heading-primary dashboard">Review Survey</div>
@@ -26,7 +29,14 @@ const SurveyFormReview = ({ onCancel, formVals, sendSurvey }) => {
           Back
         </button>
         <button
-          onClick={() => sendSurvey(formVals)}
+          onClick={() => {
+            if (user.credits < 1) {
+              alert('You Do Not Have Enough Credits To Send A Survey')
+              }
+             else {
+              sendSurvey(formVals);
+            }
+          }}
           className="btn-submit add form"
         >
           Send Survey
@@ -38,9 +48,9 @@ const SurveyFormReview = ({ onCancel, formVals, sendSurvey }) => {
 };
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
-    formVals: state.form.SurveyForm.values
+    formVals: state.form.SurveyForm.values,
+    user: state.auth
   };
 }
 export default connect(mapStateToProps, surveyActions)(SurveyFormReview);

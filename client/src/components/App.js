@@ -8,6 +8,9 @@ import Logout from "./authentication/Logout";
 import SurveyNew from "./surveys/SurveyNew";
 import history from "../utilities/history";
 import { Router, Switch, Route } from "react-router-dom";
+import Alert from "react-s-alert";
+import 'react-s-alert/dist/s-alert-default.css';
+import 'react-s-alert/dist/s-alert-css-effects/slide.css';
 
 class App extends Component {
   renderContent() {
@@ -51,7 +54,12 @@ class App extends Component {
   }
 
   render() {
-    return <div>{this.renderContent()}</div>;
+    return (
+      <div>
+        {this.renderContent()}
+        <Alert stack={{ limit: 3 }} />
+      </div>
+    );
   }
 }
 

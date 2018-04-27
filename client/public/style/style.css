@@ -117,7 +117,15 @@ body {
       width: 100%; } }
 
 .form-container.sign {
-  height: 77vh; }
+  height: 77vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  @media only screen and (max-width: 78em) {
+    .form-container.sign {
+      height: 100vh;
+      display: flex;
+      justify-content: center; } }
 
 .survey-buttons {
   display: flex;
@@ -201,7 +209,13 @@ body {
 .form-container {
   font-size: 1.6rem; }
   .form-container.dashboard {
-    overflow: auto; }
+    overflow: auto;
+    height: 72vh; }
+    @media only screen and (max-width: 78em) {
+      .form-container.dashboard {
+        height: 100vh;
+        display: flex;
+        justify-content: "center"; } }
 
 .heading-primary.dashboard {
   justify-content: center; }

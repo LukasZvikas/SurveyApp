@@ -14,12 +14,20 @@
     margin: 0;
     height: 100vh;
     width: 100%;
-
   }
 }
 
-.form-container.sign{
+.form-container.sign {
   height: 77vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and(max-width: $bp-largest) {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .survey-buttons {

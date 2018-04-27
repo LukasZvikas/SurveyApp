@@ -25,7 +25,7 @@ class SurveyForm extends Component {
 
   render() {
     return (
-      <div className="form-container dashboard">
+      <div className="form-container">
         <div className="heading-primary dashboard">New Survey</div>
         <form onSubmit={this.props.handleSubmit(this.props.onNext)}>
           {this.renderFields()}

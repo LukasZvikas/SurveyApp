@@ -6,7 +6,15 @@
 
   &.dashboard {
     overflow: auto;
+    height: 72vh;
+
+        @media only screen and(max-width: $bp-largest){
+      height: 100vh;
+      display: flex;
+      justify-content: "center";
+    }
   }
+
 }
 
 .heading-primary {
