@@ -1,6 +1,7 @@
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
+import swal from "sweetalert";
 import surveyTypes from "./surveyTypes";
 import * as surveyActions from "../../actions/surveyActions";
 import Footer from "../footer";
@@ -18,7 +19,6 @@ const SurveyFormReview = ({ onCancel, formVals, user, sendSurvey }) => {
     );
   });
 
-
   console.log(user.credits);
   return (
     <div className="form-container dashboard">
@@ -31,9 +31,12 @@ const SurveyFormReview = ({ onCancel, formVals, user, sendSurvey }) => {
         <button
           onClick={() => {
             if (user.credits < 1) {
-              alert('You Do Not Have Enough Credits To Send A Survey')
-              }
-             else {
+              swal({
+                text: "Not enough credits to send a survey",
+                icon: "error",
+                dangerMode: true
+              });
+            } else {
               sendSurvey(formVals);
             }
           }}
